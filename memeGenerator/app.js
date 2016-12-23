@@ -9,11 +9,11 @@ var main = function() {
        $('#image-url').keyup (function() {
         $('.meme').children().attr("src",$(this).val());
       });
-
+/*
        $('#image-file').change (function() {
         $('.meme').children().attr("src",$(this).val().replace(/^.*\\/, ""));
           });
-
+*/
 
 
 };
