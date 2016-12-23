@@ -11,10 +11,10 @@ var main = function() {
       });
 
        $('#image-file').change (function() {
-        $('.meme').children().attr("src",$(this).val().replace(/^.*\\/, ""));
+        $('.meme').children().attr("src",$(this));
           });
 
-    
+
 
 };
 
