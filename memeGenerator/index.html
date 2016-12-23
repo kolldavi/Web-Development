@@ -30,15 +30,16 @@
               <h2>Create a meme</h2>
               <form role="form">
                 <div class="form-group">
-                  <label>Image URL</label>
-                  <br />
-                  <form id="changeFileSelector">
+                  <label>Paste or type Image URL:</label>
+
+              <!--   <form id="changeFileSelector">
                       <input id ='urlRadio' type="radio" name="fileSelector" value="URL"  checked="checked"> URL<br>
                       <input id ='fileRadio' type="radio" name="fileSelector" value="File" checked="checked"> File<br>
                   </form>
+                -->
 
-                  <input id="image-url" type="text" class="form-control">
-
+                  <input id="image-url" type="text" class="form-control" style = " border: 1px solid black" >
+                      <label>Select Local File:</label>
                   <input type="file" id="image-file" multiple="multiple" accept="image/*" />
 
                 </div>

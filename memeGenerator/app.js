@@ -10,13 +10,6 @@ var main = function() {
         $('.meme').children().attr("src",$(this).val());
       });
 
-  /*    var reader = new FileReader();
-       $('#image-file').change (function() {
-        $('.meme').children().attr("src",$(this).val().replace(/^.*\\/, ""));
-      });*/
-
-
-
 };
  function handleFileSelect(evt) {
 var files = evt.target.files; // FileList object
@@ -34,11 +27,6 @@ for (var i = 0, f; f = files[i]; i++) {
   // Closure to capture the file information.
   reader.onload = (function(theFile) {
     return function(e) {
-      // Render thumbnail.
-  //    var span = document.createElement('span');
-  //    span.innerHTML = ['<img class="thumb" src="', e.target.result,
-  //                      '" title="', escape(theFile.name), '"/>'].join('');
-  //    document.getElementById('list').insertBefore(span, null);
     $('.meme').children().attr("src",e.target.result);
     };
   })(f);
