@@ -5,9 +5,16 @@ var main = function() {
    $('#bottom-text').keyup (function() {
     $('.bottom-caption').text($(this).val());
        });
-   $('#image-url').keyup (function() {
-    $('.meme').children().attr("src",$(this).val());
-       });
+
+       $('#image-url').keyup (function() {
+        $('.meme').children().attr("src",$(this).val());
+      });
+
+       $('#image-file').change (function() {
+        $('.meme').children().attr("src",$(this).val().replace(/^.*\\/, ""));
+          });
+
+    
 
 };
 
