@@ -10,8 +10,6 @@ var main = function() {
         $('.meme').children().attr("src",$(this).val());
       });
 
-      $(".meme").resizable();
-
 };
  function handleFileSelect(evt) {
 var files = evt.target.files; // FileList object
