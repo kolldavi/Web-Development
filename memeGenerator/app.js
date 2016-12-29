@@ -1,13 +1,15 @@
 var main = function() {
-  $('#top-text').keyup (function() {
+
+  $('#top-text').on('change keyup paste', function(){
     $('.top-caption').text($(this).val());
        });
-   $('#bottom-text').keyup (function() {
-    $('.bottom-caption').text($(this).val());
+    $('#bottom-text').on('change keyup paste', function(){
+          $('.bottom-caption').text($(this).val());
        });
 
-       $('#image-url').keyup (function() {
-        $('.meme').children().attr("src",$(this).val());
+
+      $('#image-url').on('change keyup paste', function(){
+          $('.meme').children().attr("src",$(this).val());
       });
 
 };
