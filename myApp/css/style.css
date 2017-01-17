@@ -1,0 +1,7 @@
+
+body {
+    position: relative;
+}
+.jumbotron{
+  background-image: url(images/mountains.jpg);
+}
