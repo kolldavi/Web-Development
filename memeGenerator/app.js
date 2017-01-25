@@ -1,5 +1,13 @@
 var main = function() {
 
+
+
+  $('.toggle').on('click',function(){
+    $('.image-url').toggle();
+  });
+
+
+
   $('#top-text').on('change keyup paste', function(){
     $('.top-caption').text($(this).val());
        });

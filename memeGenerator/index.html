@@ -25,33 +25,29 @@
 
           </div>
           <div class="col-md-6">
-
             <div class="tool">
               <h2>Create a meme</h2>
-              <form role="form">
-                <div class="form-group">
-                  <label>Paste or type Image URL:</label>
+              <form>
 
-              <!--   <form id="changeFileSelector">
-                      <input id ='urlRadio' type="radio" name="fileSelector" value="URL"  checked="checked"> URL<br>
-                      <input id ='fileRadio' type="radio" name="fileSelector" value="File" checked="checked"> File<br>
-                  </form>
-                -->
+            <input type="radio" class="toggle" name="gender" value="fromUrl"> Type/Paste URL<br>
+            <input type="radio" class="toggle" name="gender" value="fromFile" checked> From Local File<br>
 
-                  <input id="image-url" type="text" class="form-control" style = " border: 1px solid black" >
-                      <label>Select Local File:</label>
-                  <input type="file" id="image-file" multiple="multiple" accept="image/*" />
+            <label id="image-url-text" class="image-url"> Paste or type Image URL:</label>
+            <input id="image-url" class="image-url" type="text" class="form-control" style = " border: 1px solid black" >
 
-                </div>
-                <div class="form-group">
+            <label class="image-url">Select Local File:</label>
+            <input id ="image-file" class="image-url" type="file" multiple="multiple" accept="image/*" />
+      </form>
+
+
+
+
                   <label>Top text</label>
                   <input id="top-text" type="text" class="form-control">
-                </div>
-                <div class="form-group">
+
                   <label>Bottom text</label>
                   <input id="bottom-text" type="text" class="form-control">
-                </div>
-              </form>
+
             </div>
 
           </div>

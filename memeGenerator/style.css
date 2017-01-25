@@ -74,3 +74,10 @@ input[type="text"]:focus {
   outline: 0;
   box-shadow: none;
 }
+
+#image-url-text{
+  display: none;
+}
+#image-url{
+  display: none;
+}
