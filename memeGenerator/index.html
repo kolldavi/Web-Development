@@ -29,14 +29,15 @@
               <h2>Create a meme</h2>
               <form>
 
-            <input type="radio" class="toggle" name="gender" value="fromUrl"> Type/Paste URL<br>
-            <input type="radio" class="toggle" name="gender" value="fromFile" checked> From Local File<br>
 
+            <input type="checkbox" class="toggle" name="gender" value="fromFile" checked> From Local File<br>
+            <br />
             <label id="image-url-text" class="image-url"> Paste or type Image URL:</label>
-            <input id="image-url" class="image-url" type="text" class="form-control" style = " border: 1px solid black" >
+              <br />
+            <input id="image-url" class="image-url" type="text"  >
 
             <label class="image-url">Select Local File:</label>
-            <input id ="image-file" class="image-url" type="file" multiple="multiple" accept="image/*" />
+            <input id ="image-file" class="image-url form-control" type="file" multiple="multiple" accept="image/*" />
       </form>
 
 
