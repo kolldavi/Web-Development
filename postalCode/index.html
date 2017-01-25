@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>POSTAL CODE</title>
+
+
+
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+    .container{
+      text-align: center;
+      margin-top: 150px;
+    }
+
+
+    html {
+        background: url(backgroundimg.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container col-md-4">
+
+        <h1>POST CODE FINDER</h1>
+        <p><strong>Enter address to find post code</strong></p>
+        <div id="message">
+
+        </div>
+        <form>
+          <div class="form-group">
+          <strong>  <label for="address">Address</label></strong>
+            <input type="text" class="form-control" id="address" aria-describedby="addressHelp" placeholder="Enter Address">
+
+          </div>
+
+          <button type="submit" class="btn btn-primary" id = "findPostCode">Submit</button>
+        </form>
+
+
+    </div>
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+
+    <script type="text/javascript">
+
+        var errorMsg = "That address could not be found! Please try again";
+        $('#findPostCode').click(function(e){
+
+          e.preventDefault();
+            if($('#address').val() !="" ){
+
+            $.ajax({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address="+
+                encodeURIComponent($('#address').val())+"&key=AIzaSyA2NfIt6lu7hVSQvVHesy_V2iM14-S5B-o",
+                type: "GET",
+                success: function(data){
+
+
+
+                  console.log( data['status']);
+                  if(data['status'] == 'OK'){
+                  var val = "";
+                    $.each(data['results'][0]['address_components'],function(key, value){
+                      if(value['types'] == 'postal_code'){
+                        val = value['long_name'];
+                      }
+                    });
+                    if(val !=""){
+                          $('#message').html('<div class="alert alert-success" role="alert"><strong>The post code for that address is: </strong>'+val+'</div>');
+                    }else{
+                      $('#message').html('<div class="alert alert-danger" role="alert"><strong>'+errorMsg+'</strong></div>');
+                    }
+                  }else{
+                      $('#message').html('<div class="alert alert-danger" role="alert"><strong>'+errorMsg+'</strong></div>');
+                  }
+                  }
+              });
+            }else{
+                    $('#message').html('<div class="alert alert-danger" role="alert"><strong>The address can not be blank! Please try again</strong></div>');
+            }
+
+          });
+
+
+    </script>
+  </body>
+</html>
