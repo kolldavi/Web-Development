@@ -47,6 +47,7 @@ background-color: white;
 
 .headerText{
   margin-top: 25px;
+    background-image: url("../img/baseball.png");
 }
 
 /* MARKETING CONTENT
@@ -148,6 +149,8 @@ footer .footer-below {
 .grayBackGround{
   background-color: gray;
 }
+
+
 
 ul {
     list-style-type: none;
