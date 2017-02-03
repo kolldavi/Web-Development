@@ -15,6 +15,7 @@ body {
 /* Carousel base class */
 .carousel {
   margin-bottom: 1rem;
+
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -26,6 +27,7 @@ margin-top: 25px;
 padding-top: 25px;
 margin-bottom: 25px;
 background-color: white;
+
 
 
 }
@@ -43,6 +45,7 @@ background-color: white;
   left: 0;
   min-width: 100%;
   height: 3rem;
+
 }
 
 .headerText{
@@ -61,6 +64,19 @@ background-color: white;
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
 
+
+}
+.marketing .col-lg-6{
+  text-align: left;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.marketing .col-lg-12{
+  text-align: center;;
+  margin-top: 1.2rem;
+  margin-bottom: 3rem;
+
 }
 .marketing h2 {
   font-weight: normal;
@@ -69,15 +85,16 @@ background-color: white;
   margin-right: .75rem;
   margin-left: .75rem;
 
+
 }
 .marketingBtn{
-position: absolute;
-bottom: -25px;
+
+bottom: -30px;
 }
 .marketing{
 
   padding-top: 5px;
-  padding-bottom: 30px;
+  padding-bottom: 35px;
 
 }
 
