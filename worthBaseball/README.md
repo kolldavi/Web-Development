@@ -1,4 +1,4 @@
-This is a WeatherApp that uses html, php, bootstrap and css to tell you the weather of a city you type in
+This is a website build for the Worth Athletic Association
 ============================================================================================================
 
 

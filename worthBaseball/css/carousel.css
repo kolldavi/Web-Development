@@ -5,7 +5,7 @@
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  color: #5a5a5a;
+  background-color: gray;
 }
 
 
@@ -47,7 +47,7 @@ background-color: white;
 
 .headerText{
   margin-top: 25px;
-    background-image: url("../img/baseball.png");
+  background-image: url("../img/baseball.png");
 }
 
 /* MARKETING CONTENT
@@ -72,7 +72,7 @@ background-color: white;
 }
 .marketingBtn{
 position: absolute;
-bottom: -30px;
+bottom: -25px;
 }
 .marketing{
 
@@ -132,7 +132,7 @@ footer h3 {
 
 footer .footer-above {
     padding-top: 50px;
-    background-color: #23334c;
+    background-color: #292b2c;
 }
 
 footer .footer-col {
@@ -142,12 +142,12 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 25px 0;
-    background-color: #233140;
+    background-color: black;
     font-size: 10px;
 }
 
-.grayBackGround{
-  background-color: gray;
+.whiteBackGround{
+  background-color: white;
 }
 
 
