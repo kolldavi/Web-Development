@@ -7,20 +7,28 @@ var main = function() {
   });
 
 
-
-  $('#top-text').on('change keyup paste', function(){
+  $('#top-text').on('input propertychange paste', function(){
     $('.top-caption').text($(this).val());
        });
-    $('#bottom-text').on('change keyup paste', function(){
+    $('#bottom-text').on('input propertychange paste', function(){
           $('.bottom-caption').text($(this).val());
        });
 
 
-      $('#image-url').on('change keyup paste', function(){
+      $('#image-url').on('input propertychange paste', function(){
           $('.meme').children().attr("src",$(this).val());
       });
 
+
+
 };
+
+//change color of font
+function update(jscolor) {
+
+  document.getElementById('top').style.color = '#' + jscolor
+  document.getElementById('bottom').style.color = '#' + jscolor
+}
  function handleFileSelect(evt) {
 var files = evt.target.files; // FileList object
 
