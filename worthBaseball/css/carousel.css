@@ -22,13 +22,18 @@ body {
   z-index: 10;
   bottom: 3rem;
 }
+
 .carouselBackGround {
 margin-top: 25px;
 padding-top: 25px;
 margin-bottom: 25px;
-background-color: white;
 
 
+}
+
+.btnBack {
+
+background-color: black;
 
 }
 
@@ -38,15 +43,15 @@ background-color: white;
   background-color: #777;
 }
 
-
 .carousel-item > img {
 
   top: 0;
   left: 0;
   min-width: 100%;
 
-
 }
+
+
 
 .headerText{
   margin-top: 25px;
