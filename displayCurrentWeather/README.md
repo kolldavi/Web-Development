@@ -1,5 +1,5 @@
-This is a WeatherApp that uses html, php, bootstrap and css to tell you the weather of a city you type in
-============================================================================================================
+This is a WeatherApp that uses openweathermap api html, javaScript, bootstrap and css to tell you the weather of a your current location
+=========================================================================================================================================
 
 
 ## Screenshot
