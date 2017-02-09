@@ -1,4 +1,4 @@
-udacity  project using ajax jquery and apis from google New York Times wiki
+udacity project using ajax jquery and apis from google New York Times wiki
 ==============================================================================
 
 
