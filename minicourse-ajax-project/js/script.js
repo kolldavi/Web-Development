@@ -20,7 +20,7 @@ function loadData() {
     var location  = $('#street').val() + ","+$('#city').val();
       $greeting.text('So you want to live at ' + location + '?');
       //image from google streetview at location
-      var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location+'&key=1486658852767';
+      var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location;
     //  console.log(imageUrl);
       //  add background-image
       $body.append('<img class="bgimg" src="'+imageUrl+'">');
@@ -43,7 +43,7 @@ function loadData() {
           var article = articles[i];
             $nytHeaderElem.append('<li class="article"> <a href="'+article.web_url+'">'+article.headline.main+'</a><p>'+ article.snippet+'</p></li>');
         }
-      }).error(function(){
+      }).error(function(e){
           $nytHeaderElem.text("The New York Times article could not be loaded");
       });
       return false;
