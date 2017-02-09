@@ -26,11 +26,10 @@ function loadData() {
       $body.append('<img class="bgimg" src="'+imageUrl+'">');
 
 
-      // Built by LucyBot. www.lucybot.com
+      // get articles about city from nyTimes
       var cityString = $('#city').val();
 
       var newYorkTimesUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+ cityString+'&sort=newest&api-key=10cbb059af054687af59a32196fe6008';
-
 
       var article ="";
       $.getJSON(newYorkTimesUrl, function(data){
@@ -43,9 +42,32 @@ function loadData() {
           var article = articles[i];
             $nytHeaderElem.append('<li class="article"> <a href="'+article.web_url+'">'+article.headline.main+'</a><p>'+ article.snippet+'</p></li>');
         }
+
       }).error(function(e){
           $nytHeaderElem.text("The New York Times article could not be loaded");
       });
+
+
+      var wikiURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+cityString+"&format=json&json&callback=wikiCallback";
+      console.log(wikiURL);
+      // Using jQuery
+      var atricleText;
+      $.ajax({
+        url:wikiURL,
+        dataType: "jsonp",
+        jsonp: "callback",
+        success: function(response){
+          var articles  = response[1];
+
+          for(var i =0;i<articles.length;i++){
+            atricleText = articles[i];
+          //  console.log(atricleText);
+          var url = "https://en.wikipedia.org/wiki/" + atricleText;
+          $wikiElem.append('<li><a href="'+url +'">'+atricleText+'</a></li>');
+          }
+        }
+      })
+
       return false;
 };
 
