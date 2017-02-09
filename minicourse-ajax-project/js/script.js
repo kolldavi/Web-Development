@@ -18,10 +18,10 @@ function loadData() {
 
     //loaction user typed in
     if($('#city').val()!== ""){
-    var location  = $('#street').val() + ","+$('#city').val();
+    var location  = $('#street').val() + ", "+$('#city').val();
       $greeting.text('So you want to live at ' + location + '?');
       //image from google streetview at location
-      var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location;
+      var imageUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location;
     //  console.log(imageUrl);
       //  add background-image
 
