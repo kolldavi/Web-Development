@@ -17,6 +17,7 @@ function loadData() {
 
 
     //loaction user typed in
+    if($('#city').val()!== ""){
     var location  = $('#street').val() + ","+$('#city').val();
       $greeting.text('So you want to live at ' + location + '?');
       //image from google streetview at location
@@ -52,6 +53,10 @@ function loadData() {
       console.log(wikiURL);
       // Using jQuery
       var atricleText;
+
+      var wikiTimeout = setTimeout(function(){
+        $wikiElem.text('failed to load data from wiki');
+      },5000);
       $.ajax({
         url:wikiURL,
         dataType: "jsonp",
@@ -64,11 +69,16 @@ function loadData() {
           //  console.log(atricleText);
           var url = "https://en.wikipedia.org/wiki/" + atricleText;
           $wikiElem.append('<li><a href="'+url +'">'+atricleText+'</a></li>');
+
+
           }
+            clearTimeout(wikiTimeout);
         }
       })
-
+}
       return false;
+
 };
+
 
 $('#form-container').submit(loadData);
