@@ -21,11 +21,12 @@ function loadData() {
     var location  = $('#street').val() + ","+$('#city').val();
       $greeting.text('So you want to live at ' + location + '?');
       //image from google streetview at location
-      var imageUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location;
+      var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+location;
     //  console.log(imageUrl);
       //  add background-image
-      $body.append('<img class="bgimg" src="'+imageUrl+'">');
 
+
+          $('.bgimg').attr('src',imageUrl);
 
       // get articles about city from nyTimes
       var cityString = $('#city').val();
