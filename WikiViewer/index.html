@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Wiki Viewer</title>
+
+
+        <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+            <style type="text/css">
+
+            * {box-sizing:border-box;}
+            body {background-color: blue;}
+
+
+            .wikipedia-container {
+                padding: 10px;
+                margin-right:2.5%;
+                margin-left:2.5%;
+                 text-align: left;
+                 margin-top: 50px;
+                 background-color: white;
+
+            }
+            .gray{
+              background-color: #CCC;
+            }
+
+
+            </style>
+          </head>
+          <body>
+
+
+                <form id="form-container" class="form-container">
+                <div class="wikipedia-container">
+                    <h1 id="wikipedia-header">Relevant Wikipedia Links</h1>
+
+                <a href="https://en.wikipedia.org/wiki/Special:Random" class="btn btn-secondary btn-sm ">Random Wiki</a><br/>
+                  <label for="item">What do you want to search: </label><input type="text" id="item" value="">
+
+                    <ul id="wikipedia-links"></ul>
+
+
+
+                        <button  class="btn btn-secondary btn-sm "id="submit-btn">Submit</button>
+
+                </div>
+
+                      </form>
+
+
+
+
+
+          <!-- jQuery first, then Tether, then Bootstrap JS. -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+
+          <script type="text/javascript">
+
+          function randomWiki(){
+
+            randomWiki
+
+            var wikiURL = "https://en.wikipedia.org/wiki/Special:Random";
+          }
+          function loadData() {
+
+
+              var $body = $('body');
+              var $wikiElem = $('#wikipedia-links');
+              // clear out old data before new request
+              $wikiElem.text("");
+
+              //loaction user typed in
+              if($('#item').val()!== ""){
+
+
+                // get articles about city from nyTimes
+                var item = $('#item').val();
+
+                var wikiURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+item+"&format=json&json&callback=wikiCallback";
+              //  console.log(wikiURL);
+                // Using jQuery
+                var atricleHead;
+                var atricleContent;
+
+                var wikiTimeout = setTimeout(function(){
+                  $wikiElem.text('failed to load data from wiki');
+                },5000);
+                $.ajax({
+                  url:wikiURL,
+                  dataType: "jsonp",
+                  jsonp: "callback",
+                  success: function(response){
+                    var articles  = response[1];
+                    var content = response[2];
+                    for(var i =0;i<articles.length;i++){
+                      atricleHead = articles[i];
+                      atricleContent = content[i];
+                    //  console.log(atricleText);
+                    var url = "https://en.wikipedia.org/wiki/" + atricleHead;
+                     if(i%2==0){
+                       $wikiElem.append('<li class="gray"><a href="'+url +'">'+atricleHead+'</a><p>'+atricleContent+'</p></li>');
+                     }else{
+                    $wikiElem.append('<li><a href="'+url +'">'+atricleHead+'</a><p>'+atricleContent+'</p></li>');
+                     }
+
+                    }
+                      clearTimeout(wikiTimeout);
+                  }
+                })
+          }
+                return false;
+
+          }
+
+
+          $('#form-container').submit(loadData);
+
+
+          </script>
+        </body>
+      </html>
