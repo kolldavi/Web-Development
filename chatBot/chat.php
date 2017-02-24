@@ -1,6 +1,6 @@
 <?php
 include ('db.php');
-  $query  = "SELECT * FROM chat order by id DESC";
+  $query  = "SELECT * FROM chat order by 'date' DESC";
   $run = $link->query($query);
 
   while($row = $run->fetch_array()) :

@@ -10,7 +10,7 @@ include ('db.php');
   </head>
   <link rel="stylesheet" href="style.css" media="all"/>
 
-  <body onload="ajaxMethod();">
+  <body >
     <div id = "container">
       <div id = "chatBox">
         <div id="chat">
@@ -20,7 +20,7 @@ include ('db.php');
       <form method="post" action="index.php">
         <input class= "input" type="text" name="name" placeholder="Enter name:" />
         <textarea class= "input" name ="msg" placeholder="Enter Message"></textarea>
-        <input class = "input" type="submit" name="submit" value="send it" />
+        <input class = "input" type="submit" name="submit" value="send it" onclick="ajaxMethod();"/>
       </form>
 
       <?php
