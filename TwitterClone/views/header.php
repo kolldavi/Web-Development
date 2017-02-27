@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="?page=timeine">Your TimeLine </a>
+            <a class="nav-link" href="?page=timeline">Your TimeLine </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="?page=yourtweets">Your Tweets</a>

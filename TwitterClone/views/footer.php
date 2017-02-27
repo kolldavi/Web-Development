@@ -1,3 +1,4 @@
+
 <footer class="footer">
 
     <div class="container">
@@ -7,7 +8,6 @@
     </div>
 
 </footer>
-
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -89,6 +89,53 @@
 
 
  });
+
+  $('.toggleFollow').click(function(){
+
+    var id = $(this).attr('data-userid');
+    $.ajax({
+      type: 'POST',
+      url:'actions.php?action=toggleFollow',
+      data: 'userid=' + id,
+      success: function(result){
+        if(result =="1")
+        {
+          $("a[data-userid='"+id+"']").html("Follow");
+        }else if(result =="2")
+        {
+          $("a[data-userid='"+id+"']").html("Unfollow");
+        }
+
+      }
+    });
+
+  });
+
+  $('#postTweetButton').click(function(){
+  //  alert($("#tweetContent").val());
+
+    $.ajax({
+      type: 'POST',
+      url:'actions.php?action=postTweet',
+      data: 'tweetContent=' + $("#tweetContent").val(),
+      success: function(result){
+        if(result == "1")
+        {
+          $("#tweetSuccess").show();
+          $("#tweetFail").hide();
+        }
+        else if(result != "")
+        {
+          $("#tweetFail").html(result).show();
+          $("#tweetSuccess").hide();
+        }
+
+
+
+      }
+    });
+  });
+
 
 
  </script>
