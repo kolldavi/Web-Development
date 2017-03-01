@@ -28,5 +28,11 @@
       $this->ReturnView($viewModel->profile(),true);
     }
 
+    protected function publicprofile()
+    {
+      $viewModel = new UserModel();
+      $this->ReturnView($viewModel->publicProfile(),true);
+    }
+
 }
  ?>

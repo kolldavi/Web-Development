@@ -2,11 +2,18 @@
 
   class ShareModel extends Model{
     public function index(){
-      $this->query('SELECT * FROM shares ORDER BY postdate DESC');
+      //$this->query('SELECT * FROM shares ORDER BY postdate DESC');
+
+    $this->query('SELECT shares.title, shares.body, shares.link, shares.postdate, users.name, users.id
+      FROM  shares INNER JOIN  users ON shares.userid = users.id');
+
       $rows = $this->resultSet();
+
 
       return $rows;
     }
+
+
     public function add()
     {
       //sanitize post

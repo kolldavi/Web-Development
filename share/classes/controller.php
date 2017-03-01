@@ -15,8 +15,8 @@
     public function executeAction()
     {
       return $this->{$this->action}();
-
     }
+    
     protected function returnView($viewModel, $fullView)
     {
       $view = 'views/'.get_class($this).'/'.$this->action.'.php';

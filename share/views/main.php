@@ -46,20 +46,14 @@
       </nav>
 
 
-      <div class="container p-t-md">
-        <div class="row">
-          <div class="col-md-3">
+      <div class="container ">
 
-          </div>
-          <div class="col-md-6">
-            <div class="media list-group-item p-a">
+            <div>
                  <?php Messages::display(); ?>
-                  <?php require($view); ?>
-            </div>
-          </div>
-          <div class="col-md-3">
 
-          </div>
+                  <?php  require($view); ?>
+            </div>
+
       </div>
 
 

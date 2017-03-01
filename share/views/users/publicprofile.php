@@ -9,10 +9,10 @@
 		      <div class="media list-group-item p-a">
 
 						<div>
-							<?php if(isset($_SESSION['isLoggedIn'])): ?>
-							<p class="btn-share"><a class="btn btn-success " href="<?php echo ROOT_PATH; ?>shares/add">Share Something</a>  </p>
-						<?php endif;?>
-							<?php foreach($viewModel as $item) : ?>
+
+							<h1 class="text-center"><?php echo $_GET['username']."'s Profile";?></h1>
+
+							<?php		foreach($viewModel as $item) : ?>
 								<div class="well">
 									<h3><?php echo $item['title']; ?></h3>
 									<small><?php echo $item['postdate']; ?></small>
@@ -27,7 +27,9 @@
 							    </div>
 
 		    <div class="col-md-2">
-
+					<?php if(isset($_SESSION['isLoggedIn'])): ?>
+					<p class="btn-share"><a class="btn btn-success " href="<?php echo ROOT_PATH; ?>shares/add">Share Something</a>  </p>
+				<?php endif;?>
 		    </div>
 				   </div>
 		</div>

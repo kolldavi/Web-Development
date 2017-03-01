@@ -93,6 +93,17 @@
 
       return $rows;
     }
+
+    public function publicprofile()
+    {
+      $this->query('SELECT * FROM shares WHERE userid = :userid ORDER BY postdate DESC');
+      $this->bind(':userid', $_GET['userid']);
+      $rows = $this->resultSet();
+
+      return $rows;
+    }
+
+
   }
 
 
