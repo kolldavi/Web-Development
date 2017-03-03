@@ -1,20 +1,20 @@
 <?php
 //start Session
 session_start();
-  require('config.php');
+  include('config.php');
 
-  require('classes/bootstrap.php');
-  require('classes/controller.php');
-  require('classes/model.php');
-  require('classes/messages.php');
+  include('classes/bootstrap.php');
+  include('classes/controller.php');
+  include('classes/model.php');
+  include('classes/messages.php');
 
-  require('controllers/home.php');
-  require('controllers/shares.php');
-  require('controllers/users.php');
+  include('controllers/home.php');
+  include('controllers/shares.php');
+  include('controllers/users.php');
 
-  require('models/home.php');
-  require('models/share.php');
-  require('models/user.php');
+  include('models/home.php');
+  include('models/share.php');
+  include('models/user.php');
 
   $bootstrap = new Bootstrap($_GET);
 
