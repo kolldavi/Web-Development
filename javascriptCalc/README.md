@@ -1,5 +1,5 @@
-jsBinClone is a site that lets you add html css and javascript to the web page and see the output instantly
-============================================================================================================
+javascriptCalc is a calculator that was made using html css javascript and jquery this was a freecodecamp challenge
+====================================================================================================================
 
 
 ## Screenshot
