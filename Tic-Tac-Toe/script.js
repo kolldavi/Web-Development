@@ -21,18 +21,13 @@ function computerClick()
 {
 
    var  x =  Math.floor(Math.random() * 9) + 1;
+
    if(inGame)
     {
                while(!checkMove($('#'+x).text()))
                 {
+                       console.log("inside:"+x);
                   x =  Math.floor(Math.random() * 9) + 1;
-                  if(checkWinner(player2Side) == true )
-                  {
-                   $('#'+x).text(player2Side);
-                  }else if(checkWinner(player2Side) == 'tie')
-                    {
-                        break;
-                    }
 
                 }
 
@@ -112,8 +107,14 @@ function checkWinner(ele){
              {
                $(this).text(player1Side);
                player1 = false;
-
-               if(onePlayer)
+               if(checkWinner(player1Side) == true )
+                 {
+                   winner = player1Side + "'s Wins";
+                 }else if(checkWinner(player1Side) == 'tie' )
+                   {
+                      winner = 'Draw';
+                   }
+               if(onePlayer && winner == '')
                  {
                    computerClick();
                  }
@@ -125,22 +126,21 @@ function checkWinner(ele){
                }
 
 
-              if(checkWinner(player1Side) == true )
-                {
-                  winner = player1Side + "'s Wins";
-                }else if(checkWinner(player2Side) == true )
+             if(checkWinner(player2Side) == true )
                 {
                   winner = player2Side + "'s Wins";
-                }else if(checkWinner(player1Side) == 'tie' )
-                  {
-                     winner = 'Draw';
-                  }
+                }
 
 
          if(winner != '')
              {
                alert(winner);
-               newGame();
+
+               setTimeout(function (){
+                  newGame();
+
+               }, 500);
+
              }
           }
       });
