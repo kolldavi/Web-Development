@@ -1,42 +1,42 @@
 
 $(document).ready(function(){
-    var isCounting = false;
+  var isCounting = false;
   var workTime = 25;
   var workTimeChanged = true;
   var breakTime = 5;
   var breakTimeChanged = true;
-  var now;
+  var now = new Date();
   var x;
-  var countDownDate;
+  var countDownDate =new Date ();
   var breakWorkingTxt ='Working';
+  var timer  = 1000;
+  var distance;
+  var pauseDate = new Date();
   var audio = new Audio('https://s3-us-west-2.amazonaws.com/devmatchkoller/sound/1-blop.wav');
 
 
 
 
-      x = setInterval(function() {
-          if(isCounting)
+x = setInterval(function() {
+    if(isCounting)
     {
-      now = new Date();
-      var distance = countDownDate - now ;
+        now = new Date();
+        //milliseconds till break or worktime
+        distance = countDownDate.getTime() - now.getTime() ;
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Time calculations
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        console.log(countDownDate);
 
-
-  $("#txt").text(minutes + ":" + seconds);
-    }
+        //display how much time is left with 2 digitits in each
+        $("#txt").text(("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2));
+      }
   // If the count down is finished, write some text
-        console.log(distance);
       if (distance < 1000)
       {
-        //play ping noise
+        //play ping noise when time mode is switched
         audio.play();
-
-
         if($('#isWorking').text() =='Break')
           {
          var t = parseInt($('#workTime').text(),10);
@@ -53,6 +53,7 @@ $(document).ready(function(){
         $('#isWorking').text(breakWorkingTxt);
             }
       }
+
     }, 1000);
 
 //Add minute to working time
@@ -100,30 +101,40 @@ $(document).ready(function(){
   });
 
 
-
    $('#countDown').click(function(){
      if(isCounting){
          isCounting = false;
         $('#isWorking').text('Pause');
-         console.log(1);
+         pauseDate = new Date();
+         //console.log("pause:"+now);
+
      }
      else
        {
-        // console.log(0);
+        // set new times once start up after pause
+        now = new Date();
+          // get how long paused
+        distance = (now.getTime() - pauseDate.getTime() );
+        // add how long paused to set Time
+        countDownDate = new Date(distance + countDownDate.getTime());
+
+        //if user changes time update clock
          if(workTimeChanged || breakTimeChanged){
          workTimeChanged = false;
          breakTimeChanged = false;
          now = new Date();
-         countDownDate = new Date ( now );
+         countDownDate = new Date ();
            if(breakWorkingTxt =="Break")
              {
-              var t = parseInt($('#break').text(),10);
+              var min = parseInt($('#break').text(),10);
+
              }else
                {
-                var t = parseInt($('#workTime').text(),10);
+                var min = parseInt($('#workTime').text(),10);
+
                }
 
-         countDownDate.setMinutes (now.getMinutes()  + t );
+         countDownDate.setMinutes (now.getMinutes()  + min );
          isCounting = true;
 
        }
