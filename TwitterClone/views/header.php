@@ -18,7 +18,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="http://176.32.230.9/davidkollerpracticewebsite.com/TwitterClone/">Twitter</a>
+      <a class="navbar-brand" href="http://davidkollerpracticewebsite-com.stackstaging.com/TwitterClone/">Twitter</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
