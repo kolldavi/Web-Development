@@ -78,7 +78,7 @@
        if(result == '1')
        {
 
-         window.location.assign('http://176.32.230.9/davidkollerpracticewebsite.com/TwitterClone/');
+         window.location.assign('http://davidkollerpracticewebsite-com.stackstaging.com/TwitterClone/');
        }
        else
        {
