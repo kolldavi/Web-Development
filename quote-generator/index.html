@@ -1,102 +1,94 @@
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quote Generator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-  <style type="text/css">
+    <style type="text/css">
 
-  .container{
-    margin-top:100px;
-  }
-  .footer{
-    text-align:center;
-  }
-
-  </style>
-</head>
-<body>
-
-<div class= "container">
-  <div class="jumbotron">
-    <h1 class="quote-text"></h1>
-    <p class="quote-author"></p>
-    <hr class="my-4">
-        <a class="twitter-share-button" data-size="large" target="_blank">Tweet This</a>
-        <div class="text-right">
-          <button type="submit" class="btn btn-primary button" id = "new-quote"> new-quote </button>
-        </div>
-  </div>
-    <div class="footer">
-      David Koller
-    </div>
-</div>
-
-
-
-
-
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-
-<script type="text/javascript">
-
-function getRandomColor() {
-
-    var letters = '0123456789ABCDEF'.split('');
-
-    var color = '#';
-
-    for (var i = 0; i < 6; i++ ) {
-
-        color += letters[Math.floor(Math.random() * 16)];
-
+    .container{
+      margin-top:100px;
     }
+    .footer{
+      text-align:center;
+    }
+    .right{
+    float:right;
+  }
 
-    return color;
 
-}
+    </style>
+  </head>
+  <body>
+    <div class= "container">
+      <div class="jumbotron">
+          <h1 class="quote-text"></h1>
+          <p class="quote-author"></p>
+          <hr class="my-4">
+          <a class="btn btn-primary twitter-share-button" data-size="large" target="_blank">Tweet This</a>
+           <button type="submit" class="btn btn-success button right" id = "new-quote"> new-quote </button>
+      </div>
+      <div class="footer">
+         By David Koller
+      </div>
+    </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-function getQuote() {
-  $.ajax({
-      headers: {
-          'X-Mashape-Key': '0cgcdcdstGmshIhWaGjsW3XEkJNjp1TR729jsnbA4pwYir84MG',
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
-      success: function (response) {
-          var responseArray = JSON.parse(response);
-          currentQuote = responseArray.quote;
-          currentAuthor = responseArray.author;
+    <script type="text/javascript">
 
-          $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&text="'+ responseArray.quote +'"%20'+ responseArray.author);
-          $('.quote-text').html(responseArray.quote);
-          $('.quote-author').html(responseArray.author);
+      function getRandomColor() {
 
-          $('body').css('background-color', getRandomColor());
-
+          var letters = '0123456789ABCDEF'.split('');
+          var color = '#';
+          for (var i = 0; i < 6; i++ ) {
+              color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
       }
-  });
-}
 
-$(document).ready(function () {
-  getQuote();
+      function getQuote() {
+        $.ajax({
+            headers: {
+                'X-Mashape-Key': '0cgcdcdstGmshIhWaGjsW3XEkJNjp1TR729jsnbA4pwYir84MG',
+                Accept: 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
+            success: function (response) {
+                var responseArray = JSON.parse(response);
+                currentQuote = responseArray.quote;
+                currentAuthor = responseArray.author;
 
-  $('#new-quote').on('click', getQuote);
-
-  $('.twitter-share-button').on('click', function () {
                 $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&text="'+ responseArray.quote +'"%20'+ responseArray.author);
-  });
+                $('.quote-text').html(responseArray.quote);
+                $('.quote-author').html(responseArray.author);
 
-});
+                $('body').css('background-color', getRandomColor());
+
+            }
+        });
+      }
+
+    $(document).ready(function () {
+      getQuote();
+
+      $('#new-quote').on('click', getQuote);
+
+      $('.twitter-share-button').on('click', function () {
+                    $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&text="'+ responseArray.quote +'"%20'+ responseArray.author);
+      });
+
+    });
 
 
-  </script>
-</body>
+      </script>
+  </body>
+</html>
