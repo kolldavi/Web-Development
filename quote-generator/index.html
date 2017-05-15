@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>Quote Generator</title>
@@ -20,11 +21,10 @@
     .right{
     float:right;
   }
-
-
     </style>
   </head>
   <body>
+
     <div class= "container">
       <div class="jumbotron">
           <h1 class="quote-text"></h1>
@@ -44,38 +44,54 @@
 
     <script type="text/javascript">
 
-      function getRandomColor() {
+    function getRandomColor() {
 
-          var letters = '0123456789ABCDEF'.split('');
-          var color = '#';
-          for (var i = 0; i < 6; i++ ) {
-              color += letters[Math.floor(Math.random() * 16)];
-          }
-          return color;
-      }
+        var letters = '0123456789ABCDEF'.split('');
 
-      function getQuote() {
-        $.ajax({
-            headers: {
-                'X-Mashape-Key': '0cgcdcdstGmshIhWaGjsW3XEkJNjp1TR729jsnbA4pwYir84MG',
-                Accept: 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
-            success: function (response) {
-                var responseArray = JSON.parse(response);
-                currentQuote = responseArray.quote;
-                currentAuthor = responseArray.author;
+        var color = '#';
 
-                $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&text="'+ responseArray.quote +'"%20'+ responseArray.author);
-                $('.quote-text').html(responseArray.quote);
-                $('.quote-author').html(responseArray.author);
+        for (var i = 0; i < 6; i++ ) {
 
-                $('body').css('background-color', getRandomColor());
+            color += letters[Math.floor(Math.random() * 16)];
 
+        }
+
+        return color;
+
+    }
+
+
+    function getQuote() {
+      $.ajax({
+          headers: {
+              'X-Mashape-Key': '0cgcdcdstGmshIhWaGjsW3XEkJNjp1TR729jsnbA4pwYir84MG',
+              Accept: 'application/json',
+              'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
+          success: function (response) {
+            var responseArray;
+                    try {
+            responseArray = JSON.parse(response);
+        } catch (e) {
+            // You can read e for more info
+            // Let's assume the error is that we already have parsed the payload
+            // So just return that
+            responseArray = response;
             }
-        });
-      }
+
+              currentQuote = responseArray.quote;
+              currentAuthor = responseArray.author;
+
+              $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&text="'+ responseArray.quote +'"%20'+ responseArray.author);
+              $('.quote-text').html(responseArray.quote);
+              $('.quote-author').html(responseArray.author);
+
+              $('body').css('background-color', getRandomColor());
+
+          }
+      });
+    }
 
     $(document).ready(function () {
       getQuote();
@@ -87,7 +103,6 @@
       });
 
     });
-
 
       </script>
   </body>
