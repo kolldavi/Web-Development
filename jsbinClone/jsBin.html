@@ -5,7 +5,7 @@
     <head>
         <title>jsBin Clone</title>
         <script type="text/javascript" src="jquery.min.js"></script>
-         <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
         <style type="text/css">
         body{
           font-family: sans-serif;
@@ -73,37 +73,36 @@
     </head>
 
     <body>
-      <div id ='header'>
-        <div id='logo'>
+      <div id ="header">
+        <div id="logo">
           CodePlayer
         </div>
 
-        <div id ='buttonContainer'>
-            <div class ='toggleButton active' id ='html'>
+        <div id ="buttonContainer">
+            <div class ="toggleButton active" id ="html">
               HTML
             </div>
-            <div class ='toggleButton' id ='css'>
+            <div class ="toggleButton" id ="css">
               CSS
             </div>
-            <div class ='toggleButton' id ='javascript'>
+            <div class ="toggleButton" id ="javascript">
               javascript
             </div>
-            <div class ='toggleButton active' id ='output'>
+            <div class ="toggleButton active" id ="output">
               output
             </div>
           </div>
       </div>
 
-      <div id='bodyContainer'>
-        <textarea id = 'htmlPannel' class = 'pannel'><p id = 'paragraph'> Hello World  </p></textarea>
-        <textarea id = 'cssPannel' class = 'pannel hidden'>p{color:green;}</textarea>
-        <textarea id = 'javascriptPannel' class = 'pannel hidden'>document.getElementById('paragraph').innerHTML =" Hello David";</textarea>
-        <iframe id = 'outputPannel' class = 'pannel'></iframe>
+      <div id="bodyContainer">
+        <textarea id = "htmlPannel" class = "pannel"><p id = "paragraph"> Hello World </p></textarea>
+        <textarea id = "cssPannel" class = "pannel hidden">p{color:green;}</textarea>
+        <textarea id = "javascriptPannel" class = "pannel hidden">document.getElementById("paragraph").innerHTML =" Hello David";</textarea>
+        <iframe id = "outputPannel" class = "pannel"></iframe>
       </div>
 
-      <script src="jquery-ui/jquery-ui.js"></script>
+      <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
       <script type="text/javascript">
-
         $('.toggleButton').hover(function(){
           $(this).addClass('highlight');
 
