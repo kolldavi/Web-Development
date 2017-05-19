@@ -4,112 +4,102 @@
     $error = "";
 
     //log user out
-    if(array_key_exists("logout",$_GET)){
-
-      session_unset();
+    if (array_key_exists("logout", $_GET)) {
+        session_unset();
       //session_destroy();
       header("Location: login.php");
 
 
       //check if cookie or session are not null
-    } else if ((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])) {
-                  //rediect to loggedInPage if  have cookie and session
+    } elseif ((array_key_exists("id", $_SESSION) and $_SESSION['id']) or (array_key_exists("id", $_COOKIE) and $_COOKIE['id'])) {
+        //rediect to loggedInPage if  have cookie and session
                     header("Location: loggedInPage.php");
-            }
+    }
 
-    if (array_key_exists('submit', $_POST) ) {
+    if (array_key_exists('submit', $_POST)) {
         //connect to database
-            include ("connection.php");
+            include("connection.php");
             //check if email is null and valid
-            if(!$_POST["email"] || filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) === false){
-             $error .= "Email not valid <br />";
+            if (!$_POST["email"] || filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) === false) {
+                $error .= "Email not valid <br />";
             }
 
-           if(!$_POST["password"]){
-             $error .= "A password is required <br />";
-           }
+        if (!$_POST["password"]) {
+            $error .= "A password is required <br />";
+        }
 
-           if($error!=""){
-             $error ="<p>There were error(s) in your form: </p>".$error;
-           }else{
+        if ($error!="") {
+            $error ="<p>There were error(s) in your form: </p>".$error;
+        } else {
+            if ($_POST['signUp'] == '1') {
+                $query = "SELECT id FROM users WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
 
-             if($_POST['signUp'] == '1'){
-
-
-
-              $query = "SELECT id FROM users WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
-
-              $result = mysqli_query($link,$query);
+                $result = mysqli_query($link, $query);
                 // echo $query."<br />";
-              if(mysqli_num_rows($result) > 0){
-                $error = "That email is taken!";
-              }else{
-                $query =  "INSERT INTO users (email, password) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')";
+              if (mysqli_num_rows($result) > 0) {
+                  $error = "That email is taken!";
+              } else {
+                  $query =  "INSERT INTO users (email, password) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."','".mysqli_real_escape_string($link, $_POST['password'])."')";
 
 
-                if(!mysqli_query($link,$query)){
-                  $error = "<p>
+                  if (!mysqli_query($link, $query)) {
+                      $error = "<p>
                   Could not sign in Please try again at a later time.
                   </p>";
-                }else{
-                  $query = "UPDATE users SET password = '".md5(md5(mysqli_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
+                  } else {
+                      $query = "UPDATE users SET password = '".md5(md5(mysqli_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
 
                 //  echo $query;
                   $x  = mysqli_insert_id($link);
-                  $_SESSION['id'] = $x;
+                      $_SESSION['id'] = $x;
 
-                  mysqli_query($link,$query);
+                      mysqli_query($link, $query);
                   //mysql_insert_id();
 
 
 
 
-                  if($_POST['stayLoggedIn'] == '1'){
-                    setcookie('id', $x  ,time() + 60 * 60 *24 * 365);
+                  if ($_POST['stayLoggedIn'] == '1') {
+                      setcookie('id', $x, time() + 60 * 60 *24 * 365);
                   }
 
-          
 
-                  header("Location: loggedInPage.php");
-                }
 
+                      header("Location: loggedInPage.php");
+                  }
               }
-
-         }else{
+            } else {
 
            //Login button selected
            //print_r($_POST);
-           $query  = "SELECT * FROM users WHERE email = '".mysqli_real_escape_string($link,$_POST['email'])."'";
+           $query  = "SELECT * FROM users WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
 
-           $result = mysqli_query($link,$query);
+                $result = mysqli_query($link, $query);
 
-           $row = mysqli_fetch_array($result);
+                $row = mysqli_fetch_array($result);
           //  print_r($row);
-           if(isset($row)){
-             $hashedpass  = md5(md5($row['id']).$_POST['password']);
+           if (isset($row)) {
+               $hashedpass  = md5(md5($row['id']).$_POST['password']);
 
-             if($hashedpass == $row['password']){
-               $_SESSION['id'] = $row['id'];
+               if ($hashedpass == $row['password']) {
+                   $_SESSION['id'] = $row['id'];
 
               // echo $_SESSION['id'];
 
-             if($_POST['stayLoggedIn'] == '1'){
-                 setcookie('id',$row['id'],time() + 60 * 60 *24 * 365);
+             if ($_POST['stayLoggedIn'] == '1') {
+                 setcookie('id', $row['id'], time() + 60 * 60 *24 * 365);
              }
 
-              header("Location: loggedInPage.php");
-
-           }else{
-               $error  = "That password is incorrect!";
-           }
-         }else{
+                   header("Location: loggedInPage.php");
+               } else {
+                   $error  = "That password is incorrect!";
+               }
+           } else {
                $error  = "That email/password combination could not be found!";
-         }
-
-          }
-
-         }
-       }
+           }
+            }
+        }
+    }
 
 
 
@@ -117,7 +107,7 @@
 ?>
 
 
-<?php include ("header.php") ?>
+<?php include("header.php") ?>
     <div class="container col-md-4">
 
       <h1>Secret Diary</h1>
@@ -126,9 +116,9 @@
       </p>
 
       <div id="error">
-         <?php if($error !=""){
-           echo  '<div class="alert alert-danger" role="alert">'.$error.'</div>';
-         }
+         <?php if ($error !="") {
+    echo  '<div class="alert alert-danger" role="alert">'.$error.'</div>';
+}
            ?>
       </div>
         <form method = "post" id ="signUpForm">
@@ -194,4 +184,4 @@
       </div>
 
 
-<?php include ("footer.php") ?>
+<?php include("footer.php") ?>

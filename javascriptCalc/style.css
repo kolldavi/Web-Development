@@ -1,98 +1,95 @@
 body, div, a {
-    padding:0;
-    margin:0;
-    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
-#currProblem{
-    height: 15px;
-    width: 310px;
-    margin:auto;
-    background-color:white;
-    text-align: right;
-    font-size: 12px;
-    margin-bottom: 5px;
+
+#currProblem {
+  height: 15px;
+  width: 310px;
+  margin: auto;
+  background-color: white;
+  text-align: right;
+  font-size: 12px;
+  margin-bottom: 5px;
 }
+
 #calculator {
-	background-color: #999;
-	width: 400px;
-	height: 485px;
-	border: 3px black solid;
-	margin: 10px auto;
-	padding: 5px;
-	border-radius: 10px;
+  background-color: #999;
+  width: 400px;
+  height: 485px;
+  border: 3px black solid;
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 #total {
-    height: 70px;
-    width: 300px;
-    margin:auto;
-    background-color:white;
-
-    text-align: right;
-    font-size: 60px;
-    padding: 0 5px;
+  height: 70px;
+  width: 300px;
+  margin: auto;
+  background-color: rgb(251, 245, 251);
+  text-align: right;
+  font-size: 60px;
+  padding: 0 5px;
 }
-a:hover{
+
+a:hover {
   box-shadow: 3px 3px 3px gray;
   border: none;
 }
 
 #numbers, #operators {
-	margin: auto;
-
+  margin: auto;
 }
+
 .numbers {
   cursor: pointer;
-	display: block;
-	width: 50px;
-	height: 50px;
-	float: left;
-	text-decoration: none;
-	color: black;
-	text-align: center;
-	font-size: 32pt;
-	padding: 10px;
-
-	margin: 5px 15px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  float: left;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-size: 32pt;
+  padding: 10px;
+  margin: 5px 15px;
   background-color: yellow;
-	border-radius: 10px;
-
+  border-radius: 10px;
 }
 
 .operators {
   cursor: pointer;
-	display: block;
-	width: 50px;
-	height: 50px;
-	float: right;
-	text-decoration: none;
-	color: black;
-	text-align: center;
-	font-size: 32pt;
-	padding: 10px;
-	margin: 5px 15px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  float: right;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-size: 32pt;
+  padding: 10px;
+  margin: 5px 15px;
   background-color: yellow;
-	border-radius: 10px;
-
+  border-radius: 10px;
 }
 
-
-#equals, #clearall{
-
-  	width: 100px;
+#equals, #clearall {
+  width: 100px;
 }
 
-#plus{
-  height:130px;
+#plus {
+  height: 130px;
 }
 
 #footer {
-	background-color: #999;
-	width: 400px;
-	height: 20px;
-	border: 3px black solid;
-	margin: 10px auto;
-  text-align:center;
-	padding: 5px;
-	border-radius: 10px;
+  background-color: #999;
+  width: 400px;
+  height: 20px;
+  border: 3px black solid;
+  margin: 10px auto;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
 }

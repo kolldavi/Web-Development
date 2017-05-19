@@ -4,44 +4,32 @@
   $error = "";
 
       if (array_key_exists('location', $_GET)) {
-
-      $city =  $_GET['location'];
-      $city = str_replace(' ', '', $_GET['location']);
-            $file_headers = @get_headers("http://www.weather-forecast.com/locations/$city/forecasts/latest");
+          $city =  $_GET['location'];
+          $city = str_replace(' ', '', $_GET['location']);
+          $file_headers = @get_headers("http://www.weather-forecast.com/locations/$city/forecasts/latest");
             //echo $forecastPage;
 
-            if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-
+            if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {
                 $error = "That city could not be found.";
-
             } else {
+                $forecastPage = file_get_contents("http://www.weather-forecast.com/locations/".$city."/forecasts/latest");
 
-            $forecastPage = file_get_contents("http://www.weather-forecast.com/locations/".$city."/forecasts/latest");
+                $contentArr = explode('3 Day Weather Forecast Summary:</b><span class="read-more-small"><span class="read-more-content"> <span class="phrase">', $forecastPage);
 
-            $contentArr = explode('3 Day Weather Forecast Summary:</b><span class="read-more-small"><span class="read-more-content"> <span class="phrase">',$forecastPage);
+                if (sizeof($contentArr) > 1) {
+                    $contentArr2 = explode('</span></span></span>', $contentArr[1]);
 
-            if (sizeof($contentArr) > 1) {
-
-            $contentArr2 = explode('</span></span></span>',$contentArr[1]);
-
-                if (sizeof($contentArr2) > 1) {
-
-                      $weather = $contentArr2[0];
-
-                  } else {
-
-                      $error = "That city could not be found.";
-
-                  }
+                    if (sizeof($contentArr2) > 1) {
+                        $weather = $contentArr2[0];
+                    } else {
+                        $error = "That city could not be found.";
+                    }
           //  echo $contentArr2[0];
-        } else {
-
-            $error = "That city could not be found.";
-
-        }
+                } else {
+                    $error = "That city could not be found.";
+                }
+            }
       }
-
-}
 
 ?>
 
@@ -86,7 +74,7 @@
                   value = "<?php
                     if (array_key_exists('location', $_GET)) {
                         echo $_GET['location'];
-                      }
+                    }
                   ?>">
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -97,11 +85,8 @@
 
                   if ($weather) {
                       echo '<div class="alert alert-success" role="alert">'.$weather.'</div>';
-
-                  } else if ($error) {
-
+                  } elseif ($error) {
                       echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';
-
                   }
 
                   ?></div>

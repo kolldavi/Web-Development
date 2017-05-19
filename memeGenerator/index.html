@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Generato</title>
 
-    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meme Generato</title>
 
-        <h1>Meme Generator</h1>
-      </div>
+  <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+
+      <h1>Meme Generator</h1>
     </div>
-    <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7">
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
 
-            <div class="meme thumbnail">
-              <img src="Snowman.jpg" >
-              <h1 id="top" class="top-caption">Do You Want To</h1>
-              <h1 id="bottom" class="bottom-caption">Build A Snowman?</h1>
-            </div>
+          <div class="meme thumbnail">
+            <img src="Snowman.jpg">
+            <h1 id="top" class="top-caption">Do You Want To</h1>
+            <h1 id="bottom" class="bottom-caption">Build A Snowman?</h1>
+          </div>
+
+        </div>
+        <div class="col-md-5">
+          <div class="tool">
+            <h2>Create a meme</h2>
+            <form>
+
+
+              <input type="checkbox" class="toggle" name="gender" value="fromFile" checked> From Local File<br>
+              <br />
+              <label id="image-url-text" class="image-url "> Paste or type Image URL:</label>
+
+              <input id="image-url" class="image-url form-control" type="text">
+
+              <label class="image-url">Select Local File:</label>
+              <input id="image-file" class="image-url form-control" type="file" multiple="multiple" accept="image/*">
+
+            </form>
+
+
+
+
+            <label>Top text</label>
+            <input id="top-text" type="text" class="form-control">
+
+            <label>Bottom text</label>
+            <input id="bottom-text" type="text" class="form-control">
+
+            <label>Color:</label>
+            <input class="jscolor {onFineChange:'update(this)'} form-control" value="cc66ff">
 
           </div>
-          <div class="col-md-5">
-            <div class="tool">
-              <h2>Create a meme</h2>
-              <form>
 
-
-            <input type="checkbox" class="toggle" name="gender" value="fromFile" checked> From Local File<br>
-            <br />
-            <label id="image-url-text" class="image-url "> Paste or type Image URL:</label>
-
-            <input id="image-url" class="image-url form-control" type="text" >
-
-            <label class="image-url">Select Local File:</label>
-            <input id ="image-file" class="image-url form-control" type="file" multiple="multiple" accept="image/*" >
-
-      </form>
-
-
-
-
-                  <label>Top text</label>
-                  <input id="top-text" type="text" class="form-control">
-
-                  <label>Bottom text</label>
-                  <input id="bottom-text" type="text" class="form-control">
-
-                  <label>Color:</label>
-                  <input class="jscolor {onFineChange:'update(this)'} form-control" value="cc66ff">
-
-            </div>
-
-          </div>
         </div>
       </div>
     </div>
-    <script src="jscolor.min.js"></script>
-    <script src="https://s3.amazonaws.com/codecademy-content/projects/jquery.min.js"></script>
-    <script src="app.js"></script>
+  </div>
+  <script src="jscolor.min.js"></script>
+  <script src="https://s3.amazonaws.com/codecademy-content/projects/jquery.min.js"></script>
+  <script src="app.js"></script>
 
 
-  </body>
-  </html>
+</body>
+
+</html>
