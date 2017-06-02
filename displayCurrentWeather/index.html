@@ -1,135 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
   <title>Current Weather</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <style type="text/css">
-  #fahrenheit{
-    display: none;
-}
+  #celsius {
+      display: none;
+    }
 
-body {
+    body {
+      background-position: center top;
+      background-size: 100% auto;
+    }
 
-background-position: center top;
-background-size: 100% auto;
-}
-.container{
-  text-align: center;
-  margin-top: 200px;
-}
-}
+    .container {
+      text-align: center;
+      margin-top: 200px;
+    }
+  }
   </style>
+
   <body>
 
 
-
-
-      <div class= "container">
-        <div class="jumbotron">
-          <h1 id="location"></h1>
-          <h2 id="forcast"></h2>
-          <h2 class="temp" id ="celsius"> </h2>
-          <h2 class="temp" id ="fahrenheit"></h2>
-          <img alt = "currectWeather" id="weatherImg" src="#" />
-          <hr class="my-4">
-    <p>
-       By David Koller
-    </p>
-        </div>
-
+    <div class="container">
+      <div class="jumbotron">
+        <h1 id="location"></h1>
+        <h2 id="forcast"></h2>
+        <h2 class="temp" id="celsius"> </h2>
+        <h2 class="temp" id="fahrenheit"></h2>
+        <img alt="currectWeather" id="weatherImg" src="#" />
+        <hr class="my-4">
+        <p>
+          By David Koller
+        </p>
       </div>
 
+    </div>
 
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.temp').on('click', function() {
+          $('.temp').toggle();
+        });
+        var imageUrl = "";
+        $.getJSON('http://ip-api.com/json', function(ipAddress) {
+          $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + ipAddress.lat + "&lon=" + ipAddress.lon + "&units&appid=27457f335b178c4d939f7a0987a0cdea", function(result) {
+            console.log(result);
 
+            $('#location').html(result['name']);
+            $('#forcast').html("Weather: " + result['weather'][0]["description"]);
+            $('#celsius').html(parseInt(result['main']['temp'] - 273.15) + '&deg;C');
+            $('#fahrenheit').html(parseInt((result['main']['temp'] - 273.15) * 2.8 + 32) + '&deg;F');
+            var icon = "http://openweathermap.org/img/w/" + result['weather'][0]['icon'] + ".png";
+            console.log(icon);
 
-$(document).ready(function(){
-
-
-  $('.temp').on('click',function(){
-    $('.temp').toggle();
-  });
-var imageUrl= "";
-   $.getJSON('http://ip-api.com/json', function(ipAddress) {
-             $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+ipAddress.lat+"&lon="+ipAddress.lon +"&units&appid=27457f335b178c4d939f7a0987a0cdea",function(result){
- console.log(result);
-
-                          $('#location').html(result['name'] );
-                          $('#forcast').html("Weather: "+result['weather'][0]["description"]);
-                          $('#celsius').html(parseInt(result['main']['temp'] - 273.15) + '&deg;C');
-                          $('#fahrenheit').html(parseInt((result['main']['temp'] - 273.15) * 2.8 + 32)+ '&deg;F');
-                         var icon = "http://openweathermap.org/img/w/"+ result['weather'][0]['icon']+".png";
-                         console.log(icon);
-
-                         $('#weatherImg').attr("src",icon);
-                         var background = result['weather'][0]["main"];
-                          console.log(background);
+            $('#weatherImg').attr("src", icon);
+            var background = result['weather'][0]["main"];
+            console.log(background);
 
 
-                          switch(background) {
-                            case 'Clouds':
-                                imageUrl = 'clouds.jpeg';
-                                break;
-                            case 'Mist':
-                                imageUrl = 'mist.jpeg';
-                                break;
-                            case 'Rain':
-                                imageUrl = 'rain.jpeg';
-                                break;
-                            case 'Storm':
-                                imageUrl = 'storm.jpeg';
-                                break;
-                            case 'Snow':
-                                imageUrl = 'snow.jpeg'
-                                break;
-                            case 'Extreme':
-                                imageUrl = 'extreme.jpeg';
-                                break;
-                            default:
-                                imageUrl = 'clear.jpeg';
-                        }
-                          console.log(imageUrl);
+            switch (background) {
+              case 'Clouds':
+                imageUrl = 'clouds.jpeg';
+                break;
+              case 'Mist':
+                imageUrl = 'mist.jpeg';
+                break;
+              case 'Rain':
+                imageUrl = 'rain.jpeg';
+                break;
+              case 'Storm':
+                imageUrl = 'storm.jpeg';
+                break;
+              case 'Snow':
+                imageUrl = 'snow.jpeg'
+                break;
+              case 'Extreme':
+                imageUrl = 'extreme.jpeg';
+                break;
+              default:
+                imageUrl = 'clear.jpeg';
+            }
+            console.log(imageUrl);
 
-           $('body').css('background-image', 'url(' + imageUrl + ')');
-               });
+            $('body').css('background-image', 'url(' + imageUrl + ')');
+          });
 
+
+
+        });
+
+
+
+        function getLocation() {
+
+          if (navigator.geolocation) {
+            // timeout at 60000 milliseconds (60 seconds)
+            var options = {
+              timeout: 60000
+            };
+            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+          } else {
+            alert("Sorry, browser does not support geolocation!");
+          }
+        }
 
 
       });
-
-
-
-    function getLocation(){
-
-       if(navigator.geolocation){
-          // timeout at 60000 milliseconds (60 seconds)
-          var options = {timeout:60000};
-          navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-       }
-
-       else{
-          alert("Sorry, browser does not support geolocation!");
-       }
-    }
-
-
-    });
-
-
     </script>
 
   </body>
+
+</html>
+y>
+
 </html>
