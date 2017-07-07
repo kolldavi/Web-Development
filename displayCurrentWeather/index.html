@@ -64,7 +64,8 @@
           $('#location').html(result['name']);
           $('#forcast').html("Weather: " + result['weather'][0]["description"]);
           $('#celsius').html(parseInt(result['main']['temp'] - 273.15) + '&deg;C');
-          $('#fahrenheit').html(parseInt((result['main']['temp'] - 273.15) * 2.8 + 32) + '&deg;F');
+          console.log(result['main']['temp']);
+          $('#fahrenheit').html(parseInt((result['main']['temp'] * (9 / 5)) - 459.67) + '&deg;F');
           var icon = "http://openweathermap.org/img/w/" + result['weather'][0]['icon'] + ".png";
           console.log(icon);
 
