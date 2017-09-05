@@ -4,17 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>Cat Clicker</title>
-
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <ul id="catList">
+  <div id="catsList">
+    <h2 id="catsListHeader">All Cats</h2>
+    <ul id="catList">
 
-  </ul>
+    </ul>
+  </div>
+
   <div id="mainCat">
     <h2 id="cat-name"></h2>
     <div id="timesClicked"></div>
     <img id="catImg" src="images/catImg.jpg" alt="cute cat" />
+    <div id="admin">
+      <label class="lable" id="nameLable">Name:</label>
+      <input type="text" id="catName" />
+      <br />
+      <label class="lable" id="catImgURLLable">catImgURL:</label>
+      <input type="text" id="catImgURL" />
+      <br />
+      <label class="lable" id="catClickCountLable"># Clicks:</label>
+      <input type="number" id="catClickCount" />
+      <br />
+      <button id="cancleBtn">Cancel</button>
+      <button id="saveBtn">Save</button>
+    </div>
+    <br />
+    <button id="adminBtn"> Admin</button>
   </div>
   <script src="script.js"></script>
 </body>

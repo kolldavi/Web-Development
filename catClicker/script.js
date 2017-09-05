@@ -2,6 +2,7 @@
 //data the app uses
 let model = {
   currentCat: null,
+  displayAdmin: false,
   cats:[{
     name:'catImg',
     img:'images/catImg.jpg',
@@ -28,6 +29,7 @@ let octopus = {
     catListView.init()
     //initialize current cat image
     catView.init()
+    adminView.init()
   },
   //returns data for current cat
   getCurrentCat: function(){
@@ -44,10 +46,77 @@ let octopus = {
   //increases timesClicked for current cat
   inccrementCounter: function(){
     model.currentCat.timesClicked++
+    if(model.displayAdmin){
+      adminView.render()
+    }
     catView.render()
+  },
+  getAdminViewState: function(){
+    return model.displayAdmin
+  },
+  openAdminView: function(){
+    model.displayAdmin = true
+    adminView.render()
+  },
+  closeAdminView: function(){
+    model.displayAdmin = false
+    adminView.hide()
+  },
+  updateCat:function(name, img, timesClicked){
+    model.currentCat.name = name
+    model.currentCat.img = img
+    model.currentCat.timesClicked = timesClicked
+    adminView.hide()
+    catView.render()
+    catListView.render()
   }
-}
 
+}
+let adminView = {
+  init: function(){
+    this.adminDiv = document.getElementById('admin')
+    this.adminBtnElem = document.getElementById('adminBtn')
+    this.catNameElem = document.getElementById('catName')
+    this.catImgURLElem = document.getElementById('catImgURL')
+    this.catClickCountElem = document.getElementById('catClickCount')
+
+    this.cancleBtn = document.getElementById('cancleBtn')
+    this.updateCatBtn = document.getElementById('saveBtn')
+
+    this.adminBtnElem.addEventListener('click', function(){
+      if(octopus.getAdminViewState()){
+        octopus.closeAdminView()
+      }else{
+        octopus.openAdminView()
+      }
+    })
+
+    this.cancleBtn.addEventListener('click',function(){
+
+      octopus.closeAdminView()
+    })
+
+    this.updateCatBtn.addEventListener('click',function(){
+      let name = document.getElementById('catName').value
+      let img =  document.getElementById('catImgURL').value
+      let timesClicked  = document.getElementById('catClickCount').value
+      octopus.updateCat(name, img, timesClicked)
+
+    })
+      octopus.closeAdminView()
+  },
+  render: function(){
+    this.adminDiv.style.display = 'block'
+    let currentCat =  octopus.getCurrentCat()
+    this.catNameElem.value = currentCat.name
+    this.catImgURLElem.value = currentCat.img
+    this.catClickCountElem.value = currentCat.timesClicked
+  },
+  hide: function(){
+    this.adminDiv.style.display = 'none'
+  },
+
+}
 let catView = {
   init: function(){
     // store pointers to our DOM elements for easy access later
@@ -86,6 +155,7 @@ let catListView = {
     //loop over all cats and create list item for each cat
     cats.forEach(cat =>{
       var elem = document.createElement('li')
+      elem.classList.add('catListItem')
       elem.textContent = cat.name
       elem.addEventListener('click', (function(cat){
         return function(){
