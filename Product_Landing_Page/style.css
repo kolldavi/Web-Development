@@ -1,0 +1,170 @@
+:root {
+    --theme-color: rgb(209, 204, 77);
+    --theme-color-dark: rgb(48, 226, 127);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main-icon {
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    color: var(--theme-color, rgb(209, 204, 77))
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+}
+
+nav,
+ul,
+li {
+    padding: 0 20px;
+}
+
+nav {
+
+    font-size: 2.5em;
+}
+
+@media(min-width:910px) {
+    ul {
+        flex-direction: row;
+    }
+
+}
+
+@media(max-width:910px) {
+    nav {
+        font-size: 1.5em;
+    }
+}
+
+#header-img {
+    height: 70px;
+}
+
+.nav-link:hover {
+    color: var(--theme-color-dark);
+    transition: color .5s;
+
+}
+
+
+a {
+    color: var(--theme-color, rgb(209, 204, 77));
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 70px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020;
+}
+
+#main {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    border-radius: 5px;
+    grid-gap: 50px;
+}
+
+#News {
+    margin-top: 75px;
+    grid-column: 2 / 4;
+    grid-row: 1;
+}
+
+#Sign-up {
+    grid-column: 1 / 5;
+    text-align: center;
+}
+
+#video {
+    width: 100%;
+    min-height: 325px;
+}
+
+.video-title {
+    text-align: center;
+}
+
+input[type="email"] {
+    max-width: 275px;
+    width: 100%;
+    padding: 5px;
+}
+
+input[type="submit"] {
+    max-width: 150px;
+    width: 100%;
+    height: 30px;
+    margin: 15px 0;
+    border: 0;
+    background-color: var(--theme-color, rgb(209, 204, 77));
+    border-radius: 5px;
+
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(48, 226, 127);
+    transition: background-color .3s;
+}
+
+#Animals {
+    grid-column: 1 / 5;
+    display: flex;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.card-button {
+    max-width: 150px;
+    width: 100%;
+    height: 30px;
+    margin: 15px 0;
+    border: 0;
+    background-color: var(--theme-color, rgb(209, 204, 77));
+    border-radius: 5px;
+}
+
+.card-button:hover {
+    background-color: rgb(48, 226, 127);
+    transition: background-color .3s;
+}
+
+.card-description {
+    margin: 15px;
+}
+
+@media(max-width:950px) {
+    #Animals {
+        flex-direction: column;
+    }
+}
