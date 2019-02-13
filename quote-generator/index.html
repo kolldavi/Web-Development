@@ -9,26 +9,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <style type="text/css">
-      .container {
-          margin-top: 100px;
-      }
+    <link rel="stylesheet" href="style.css"
 
-      .footer {
-          text-align: center;
-      }
-
-      .right {
-          float: right;
-      }
-    </style>
   </head>
   <body>
 
     <div class= "container">
       <div class="jumbotron">
-          <h1 id="quote-text" class="quote-text"></h1>
-          <p id="quote-author" class="quote-author"></p>
+        <div id="display">
+            <h1 id="quote-text" class="quote-text"></h1>
+            <p id="quote-author" class="quote-author"></p>
+        </div>
           <hr class="my-4">
           <a id="twitter-share-button"class="btn btn-primary twitter-share-button" target="_blank">Tweet This</a>
            <button type="submit" class="btn btn-success button right" id = "new-quote"> new-quote </button>
@@ -40,7 +31,8 @@
 
 
     <script type="text/javascript">
-      const twitterBtn = document.getElementById('twitter-share-button');
+const display = document.getElementById('display');
+const twitterBtn = document.getElementById('twitter-share-button');
 const newQuoteBtn = document.getElementById('new-quote');
 const quoteText = document.getElementById('quote-text');
 const quoteAuthor = document.getElementById('quote-author');
@@ -58,8 +50,10 @@ function getRandomColor() {
 	return color;
 }
 
-const getQuote = async () => {
-	let data = await fetch('https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous', {
+const getQuote =  async() => {
+  	
+display.classList.add('new-text')
+ let data = await fetch('https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous', {
 		headers: {
 			'X-Mashape-Key': 'VC4u68EmPnmshrbS7cVs5BZwQKiyp1zq2GAjsnAFFlbquG4ldT',
 			Accept: 'application/json',
@@ -74,15 +68,17 @@ const getQuote = async () => {
 		})
 		.catch(e => {
 			return e;
-		});
+		}); 
 
 	currentQuote = data[0].quote;
 	currentAuthor = data[0].author;
-
-	twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} ${currentQuote}`;
-	quoteText.innerText = currentQuote ? currentQuote : 'e';
-	quoteAuthor.innerText = currentAuthor ? currentAuthor : 'e';
+  twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} ${currentQuote}`;
+	quoteText.innerText = currentQuote ? currentQuote : 'error loading data';
+	quoteAuthor.innerText = currentAuthor ? currentAuthor : '';
 	body[0].style.backgroundColor = getRandomColor();
+  setTimeout(() => {
+	display.classList.remove('new-text')
+  }, 1000);
 };
 
 getQuote();

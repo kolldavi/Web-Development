@@ -1,0 +1,40 @@
+.container {
+    margin-top: 100px;
+
+}
+
+.footer {
+    text-align: center;
+}
+
+.right {
+    float: right;
+}
+
+
+
+
+#display.new-text {
+    animation-duration: 1s;
+    animation-name: changeText;
+    animation-timing-function: linear;
+}
+
+
+
+@keyframes changeText {
+    0% {
+        opacity: 1;
+
+    }
+
+    25% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
