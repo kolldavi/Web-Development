@@ -18,10 +18,10 @@ function loadData() {
 		var location = $('#street').val() + ', ' + $('#city').val();
 		$greeting.text('So you want to live at ' + location + '?');
 		//image from google streetview at location
-		var imageUrl = 'e';
-		// 'http://maps.googleapis.com/maps/api/streetview?size=600x00&location=' +
-		// location +
-		// '&key=AIzaSyCSXXOgQCWuwmnAMFBCtGjqXUGz6-QEcZ0';
+		var imageUrl =
+			'http://maps.googleapis.com/maps/api/streetview?size=600x00&location=' +
+			location +
+			'&key=AIzaSyCSXXOgQCWuwmnAMFBCtGjqXUGz6-QEcZ0';
 
 		//  add background-image
 
