@@ -41,13 +41,19 @@ const getQuote = async () => {
 		.catch(e => {
 			return e;
 		});
-
-	currentQuote = data[0].quote;
-	currentAuthor = data[0].author;
-	display.classList.remove('new-text');
-	twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} By ${currentAuthor}`;
-	quoteText.innerText = currentQuote ? currentQuote : 'error loading data';
-	quoteAuthor.innerText = currentAuthor ? currentAuthor : '';
+	if (data && data[0]) {
+		currentQuote = data[0].quote;
+		currentAuthor = data[0].author;
+		display.classList.remove('new-text');
+		quoteText.style.color = '#000';
+		twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} By ${currentAuthor}`;
+		quoteText.innerText = currentQuote ? currentQuote : 'error loading data';
+		quoteAuthor.innerText = currentAuthor ? currentAuthor : '';
+	} else {
+		quoteText.innerText = data;
+		display.classList.remove('new-text');
+		quoteText.style.color = '#f00';
+	}
 	body[0].style.backgroundColor = getRandomColor();
 };
 

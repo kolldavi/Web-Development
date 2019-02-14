@@ -2,6 +2,7 @@ quote-generator
 =================================
 
 This project get famous quotes from https://andruxnet-random-famous-quotes.p.mashape.com/ and displays them on the page.
+
 This project also lets you tweet the quote
 
 ## Screenshot
