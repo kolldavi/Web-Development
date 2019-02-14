@@ -25,7 +25,7 @@
            <button type="submit" class="btn btn-success button right" id = "new-quote"> new-quote </button>
       </div>
       <div class="footer">
-         By David Koller
+          <h3><small class="text-muted">By David Koller</small></h3>
       </div>
     </div>
 
@@ -51,8 +51,12 @@ function getRandomColor() {
 }
 
 const getQuote =  async() => {
-  	
-display.classList.add('new-text')
+  			quoteText.innerText = `loading data...
+        
+        
+        `;
+	      quoteAuthor.innerText ='';
+      display.classList.add('new-text');
  let data = await fetch('https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous', {
 		headers: {
 			'X-Mashape-Key': 'VC4u68EmPnmshrbS7cVs5BZwQKiyp1zq2GAjsnAFFlbquG4ldT',
@@ -72,13 +76,12 @@ display.classList.add('new-text')
 
 	currentQuote = data[0].quote;
 	currentAuthor = data[0].author;
-  twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} ${currentQuote}`;
+  	display.classList.remove('new-text')
+  twitterBtn.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${currentQuote} By ${currentAuthor}`;
 	quoteText.innerText = currentQuote ? currentQuote : 'error loading data';
 	quoteAuthor.innerText = currentAuthor ? currentAuthor : '';
 	body[0].style.backgroundColor = getRandomColor();
-  setTimeout(() => {
-	display.classList.remove('new-text')
-  }, 1000);
+
 };
 
 getQuote();

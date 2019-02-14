@@ -1,6 +1,9 @@
 .container {
-    margin-top: 100px;
+    margin-top: 5vh;
+}
 
+.jumbotron {
+    min-height: 70vh;
 }
 
 .footer {
@@ -15,9 +18,11 @@
 
 
 #display.new-text {
-    animation-duration: 1s;
+    text-align: center;
+    animation-duration: 2s;
     animation-name: changeText;
     animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 
@@ -31,10 +36,9 @@
     25% {
         opacity: 0;
 
-    }
 
-    100% {
-        opacity: 1;
+        100% {
+            opacity: 1;
 
+        }
     }
-}
