@@ -15,7 +15,9 @@
 }
 
 
-
+#display {
+    min-height: 50vh;
+}
 
 #display.new-text {
     text-align: center;
