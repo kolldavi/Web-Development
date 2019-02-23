@@ -1,28 +1,44 @@
 Vue.component('product', {
-	template: `<div class="product">
-	<div class="product-image">
-		<img v-bind:src="image" />
-	</div>
-	<div class="product-info">
-		<h1>{{title}}</h1>
-		<p v-if="inStock">In stock</p>
+	props:{
+		premium:{
+			type: Boolean,
+			required: true
+		}
+	},
+	template: `
+    <div class="product">
+      <div class="product-image">
+        <img v-bind:src="image" />
+      </div>
+      <div class="product-info">
+        <h1>{{ title }}</h1>
+        <p v-if="inStock">In stock</p>
+        <p v-else :class="{outSfStock: !inStock}">Out of stock</p>
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+        <p>Shipping Cost: {{ shippingPrice }}</p>
+        <div
+          v-for="(variant, index) in variants"
+          :key="variant.variantId"
+          class="color-box"
+          v-bind:style="{backgroundColor: variant.variantColor}"
+          @mouseover="updateProduct(index)"
+        ></div>
+        <button
+          v-on:click="addToCart"
+          :disabled="!inStock"
+          :class="{disabledButton: !inStock}"
+        >
+          Add To Cart
+        </button>
+        <button v-on:click="removeFromCart">Remove Item</button>
 
-		<p v-else :class="{outSfStock: !inStock}">Out of stock</p>
-		<ul>
-			<li v-for="detail in details">{{detail}}</li>
-		</ul>
-		<div v-for="(variant, index) in variants" :key="variant.variantId" class="color-box" v-bind:style="{backgroundColor: variant.variantColor}"
-			@mouseover="updateProduct(index)">
-		</div>
-		<button v-on:click="addToCart" :disabled="!inStock" :class="{disabledButton: !inStock}">
-			Add To Cart</button>
-		<button v-on:click="removeFromCart">Remove Item</button>
+        <p v-if="onSale">On Sale</p>
 
-		<p v-if="onSale">On Sale</p>
-		<div class="cart">
-			<p>Cart ({{cart}})</p>
-		</div>
-	</div>`,
+      </div>
+    </div>
+	`,
 	data() {
 		return {
 			product: 'Socks',
@@ -41,7 +57,7 @@ Vue.component('product', {
 					variantId: 2235,
 					variantColor: 'blue',
 					variantImage: './assests/blue-sock.jpeg',
-					variantInStock: false,
+					variantInStock: true,
 					onSale: false
 				}
 			],
@@ -50,11 +66,10 @@ Vue.component('product', {
 	},
 	methods: {
 		addToCart() {
-			this.cart++;
+			this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId);
 		},
 		removeFromCart() {
-			if (this.cart === 0) return;
-			this.cart--;
+			this.$emit('remove-from-cart',this.variants[this.selectedVariant].variantId);
 		},
 		updateProduct(index) {
 			this.selectedVariant = index;
@@ -72,9 +87,28 @@ Vue.component('product', {
 		},
 		onSale() {
 			return this.variants[this.selectedVariant].onSale;
+		},
+		shippingPrice(){
+			return this.premium ? 'free':2.99;
 		}
 	}
 });
 var app = new Vue({
-	el: '#app'
+	el: '#app',
+	data:{
+		premium: true,
+		cart:[]
+	},
+	methods: {
+		addToCart(id){
+			this.cart.push(id)
+		},
+		removeFromCart(id){
+			
+			var index = this.cart.indexOf(id);
+			if(index >-1){
+				this.cart.splice(index,1)
+			}
+		}
+	},
 });
