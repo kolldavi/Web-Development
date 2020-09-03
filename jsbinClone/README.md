@@ -2,6 +2,6 @@
 
 ## Screenshot
 
-[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/jsbinClone/ScreenShotJsBinClone.png?raw=true)](http://www.dkoller.com/Web-Development/jsbinClone/jsBin.html)
+[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/jsbinClone/ScreenShotJsBinClone.png?raw=true)](https://kolldavi.github.io/Web-Development/jsbinClone/jsBin.html)
 
 # Create by David Koller
