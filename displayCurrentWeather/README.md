@@ -3,7 +3,7 @@ This is a WeatherApp that uses openweathermap api html, javaScript, bootstrap an
 
 
 ## Screenshot
-[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/displayCurrentWeather/weatherScreenShot.png?raw=true)](http://www.dkoller.com/Web-Development/displayCurrentWeather/index.html)
+[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/displayCurrentWeather/weatherScreenShot.png?raw=true)](https://kolldavi.github.io/Web-Development/displayCurrentWeather/index.html)
 
 Create by David Koller
 =======================
