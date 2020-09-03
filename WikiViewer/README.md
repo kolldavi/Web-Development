@@ -2,6 +2,6 @@
 
 ## Screenshot
 
-[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/WikiViewer/WikiViewerScreenShot.png?raw=true)](http://www.dkoller.com/Web-Development/WikiViewer/index.html)
+[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/WikiViewer/WikiViewerScreenShot.png?raw=true)](https://kolldavi.github.io/Web-Development/WikiViewer/index.html)
 
 # Create by David Koller
