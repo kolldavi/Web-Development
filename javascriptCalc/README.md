@@ -2,6 +2,6 @@
 
 ## Screenshot
 
-[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/javascriptCalc/calcScreenShot.png?raw=true)](http://www.dkoller.com/Web-Development/javascriptCalc/)
+[![IMAGE ALT TEXT HERE](https://github.com/kolldavi/Web-Development/blob/master/javascriptCalc/calcScreenShot.png?raw=true)](https://kolldavi.github.io/Web-Development/javascriptCalc/)
 
 # Create by David Koller
